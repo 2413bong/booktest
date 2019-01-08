@@ -1,6 +1,7 @@
 package test.test.test.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ public class BookDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public Book getBookList(String myBookName){
-		return sqlSessionTemplate.selectOne("SQL.BookSQL.getBookList",myBookName);
+	public List<Book> getBookList(Map<String, List<String>> booklist){
+		return sqlSessionTemplate.selectList("SQL.BookSQL.getBookList",booklist);
 		
 	}
 	public User getUserBookName(String UserID){
