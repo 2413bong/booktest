@@ -17,7 +17,7 @@ import test.test.test.vo.User;
 public class BookService {
 	@Autowired
 	private  BookDAO bookDAO;
-	
+	/*
 	public List<Book> bookList(String userID){
 		Map<String, List<String>> bookmap = new HashMap<String, List<String>>();
 		String myBookNames = bookDAO.getUserBookName(userID).getMyBook();
@@ -31,5 +31,17 @@ public class BookService {
 		return bookDAO.getBookList(bookmap);
 		
 	}
-	
+	*/
+	public List<Book> bookList(String userID){
+		String myBookNames = bookDAO.getUserBookName(userID).getMyBook();
+		System.out.println(myBookNames);
+		String[] myBookName =myBookNames.split(",");
+		int max = myBookName.length;
+		List<String> bookList = new ArrayList<String>();
+		for(int i =0;i<max;i++) {
+			bookList.add(myBookName[i]);
+		}
+		return bookDAO.getBookList(bookList);
+		
+	}
 }

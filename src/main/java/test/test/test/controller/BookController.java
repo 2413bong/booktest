@@ -21,6 +21,7 @@ public class BookController {
 	@RequestMapping(value = "/bookselect/{userID}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Book> bookList(@PathVariable String userID) {
+		System.out.println(userID);
 		return bookService.bookList(userID);
 	}
 }
